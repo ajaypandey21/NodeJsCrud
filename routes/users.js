@@ -26,6 +26,9 @@ const userSchema = new mongoose.Schema({
    
     trim: true,
   },
+  image:{
+    type:String
+  },
 });
 
 userSchema.plugin(plm)

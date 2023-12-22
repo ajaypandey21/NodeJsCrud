@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
     <!-- You can link your CSS stylesheets here if needed -->
-   <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
     <form action="/login" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+        <% if(error){ %>
+            <p><%- error %></p>
+          <% } %>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required />
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
 
-        <button type="submit">Login</button>
-        <a href="/">Signup</a>
+      <button type="submit">Login</button>
+      <a href="/">Signup</a>
     </form>
-
-</body>
+  </body>
 </html>

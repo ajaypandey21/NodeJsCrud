@@ -3,10 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/stylesheets/profile.css" />
   </head>
   <body>
-    <h1>Yayyy, Welcome to our blog</h1>
-    <a href="/logout"><button>Logout</button></a>
+    <!-- User Profile Section -->
+    <div class="profile-container">
+      <img
+        src="/images/pfp/<%= userData.image %>"
+        alt="Profile Picture"
+        class="profile-picture"
+      />
+      <div class="full-name"><%= userData.fullname %></div>
+      <div class="username">@<%= userData.username %></div>
+      <form action="/pfp" method="post" enctype="multipart/form-data">
+        <label for="file-input">Upload your profile picture:</label>
+        <input
+          type="file"
+          name="file"
+          id="file-input"
+          accept="image/*"
+          required
+        />
+        <input type="submit" placeholder="submit" />
+       <a href="/logout">Logout</a>
+      </form>
+    </div>
+
+    <!-- Post Form Section -->
+    <div>
+      <form
+        action="/submit-post"
+        method="post"
+        class="post-form"
+        enctype="multipart/form-data"
+      >
+        <div>
+          <label for="file-input">Upload Pictures into your gallary:</label>
+          <input
+            type="file"
+            name="file"
+            id="file-input"
+            accept="image/*"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="caption-input">Caption:</label>
+          <input type="text" name="caption" id="caption-input" required />
+        </div>
+
+        <div class="form-group">
+          <input type="submit" value="Submit" />
+        </div>
+      </form>
+    </div>
   </body>
 </html>
