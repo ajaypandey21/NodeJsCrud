@@ -26,14 +26,14 @@
           required
         />
         <input type="submit" placeholder="submit" />
-       <a href="/logout">Logout</a>
+        <a href="/logout">Logout</a>
       </form>
     </div>
 
     <!-- Post Form Section -->
     <div>
       <form
-        action="/submit-post"
+        action="/photos"
         method="post"
         class="post-form"
         enctype="multipart/form-data"
@@ -51,13 +51,28 @@
 
         <div class="form-group">
           <label for="caption-input">Caption:</label>
-          <input type="text" name="caption" id="caption-input" required />
+          <input
+            placeholder="enter the caption"
+            type="text"
+            name="postText"
+            id="caption-input"
+            required
+          />
         </div>
 
         <div class="form-group">
           <input type="submit" value="Submit" />
         </div>
       </form>
+      <div class="container">
+        <% userData.posts.forEach((post)=>{ %>
+
+        <div class="card">
+          <img class="pimg" src="/images/users/<%= post.image %>" />
+          <h1><%=post.postText%></h1>
+          <%})%>
+        </div>
+      </div>
     </div>
   </body>
 </html>
