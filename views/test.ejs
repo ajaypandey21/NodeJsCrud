@@ -59,17 +59,57 @@
           </a>
         </div>
       </div>
-      <div>
+      <div class="flex flex-col justify-center items-center">
         <!-- file upload div -->
+        <form
+          action="/photos"
+          method="post"
+          id="gallaryform"
+          enctype="multipart/form-data"
+        >
+          <input
+            type="file"
+            name="photo"
+            id="pic-input"
+            accept="image/*"
+            required
+            class="hidden"
+            onchange="handleup()"
+          />
+          <label
+            for="pic-input"
+            class="cursor-pointer block bg-gray-300 ml-4 px-2 py-1 rounded-md text-center"
+          >
+            Choose photos to upload</label
+          >
+
+          <input
+            placeholder="enter the caption"
+            type="text"
+            name="postText"
+            id="caption-input"
+            required
+            class="border border-black my-1 mx-4"
+          />
+        </form>
       </div>
     </div>
-    <div>
-      <!-- gallery of pictures -->
+    <div class="flex flex-wrap gap-4">
+      <% userData.posts.forEach((post) => { %>
+        <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4">
+          <img class="w-full h-40 object-contain rounded" src="/images/users/<%= post.image %>" alt="Post Image" />
+          <span class="block mt-2 text-center"><%= post.postText %></span>
+        </div>
+      <% }) %>
     </div>
+    
   </body>
   <script>
     function handlesub() {
       document.getElementById("profilePictureForm").submit();
+    }
+    function handleup() {
+      document.getElementById("gallaryform").submit();
     }
   </script>
 </html>

@@ -13,7 +13,7 @@ router.get("/test",(req,res)=>{
   res.render("test")
 })
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express" });
+  res.redirect("profile",);
 });
 router.get("/profile", isLogggedin, async function (req, res, next) {
   const userData = await userModel
@@ -78,7 +78,7 @@ router.post(
 router.post(
   "/photos",
   isLogggedin,
-  upload2.single("file"),
+  upload2.single("photo"),
   async function (req, res) {
     if (!req.file) {
       return res.status(400).send("no files selected");
