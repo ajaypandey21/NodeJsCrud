@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="stylish.css" />
+    <!-- Add these lines in the head of your HTML file -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="flex justify-center max-h-[40%]">
+      <!-- container of half size to render main profile -->
+      <div>
+        <!-- user info div -->
+        <div class="flex items-center">
+          <img
+            class="h-32 w-32 object-cover rounded-full"
+            src="/images/pfp/<%= userData.image %>"
+            alt="Profile"
+          />
+
+          <form
+            action="/pfp"
+            method="post"
+            id="profilePictureForm"
+            enctype="multipart/form-data"
+          >
+            <div class="relative">
+              <input
+                type="file"
+                name="file"
+                id="file-input"
+                accept="image/*"
+                required
+                class="hidden"
+                onchange="handlesub()"
+              />
+              <label
+                for="file-input"
+                class="cursor-pointer block bg-gray-300 ml-4 px-2 py-1 rounded-md text-center"
+              >
+                <span class="">Change</span>
+              </label>
+            </div>
+            <button type="submit" class="hidden"></button>
+          </form>
+        </div>
+        <div class="text-center">
+          <h1 class="my-2 text-4xl"><%= userData.fullname %></h1>
+          <p class="my-2">@<%= userData.username %></p>
+          <a href="/logout">
+            <button class="bg-blue-500 text-white px-2 py-1 rounded-xl">
+              logout
+            </button>
+          </a>
+        </div>
+      </div>
+      <div>
+        <!-- file upload div -->
+      </div>
+    </div>
+    <div>
+      <!-- gallery of pictures -->
+    </div>
+  </body>
+  <script>
+    function handlesub() {
+      document.getElementById("profilePictureForm").submit();
+    }
+  </script>
+</html>

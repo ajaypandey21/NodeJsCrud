@@ -9,6 +9,9 @@ const localStrategy = require("passport-local");
 passport.use(new localStrategy(userModel.authenticate()));
 
 /* GET home page. */
+router.get("/test",(req,res)=>{
+  res.render("test")
+})
 router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
 });
@@ -19,7 +22,7 @@ router.get("/profile", isLogggedin, async function (req, res, next) {
     })
     .populate("posts");
 
-  res.render("profile", { userData });
+  res.render("test", { userData });
 });
 router.get("/login", function (req, res) {
   res.render("login", { error: req.flash("error") });
