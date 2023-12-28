@@ -12,6 +12,10 @@ passport.use(new localStrategy(userModel.authenticate()));
 router.get("/test",(req,res)=>{
   res.render("test")
 })
+router.get("/dash",async(req,res)=>{
+  const userData = await userModel.find()
+  res.render("dash",{user:userData})
+})
 router.get("/", function (req, res, next) {
   res.redirect("profile",);
 });
