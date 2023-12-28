@@ -16,6 +16,28 @@ router.get("/dash",async(req,res)=>{
   const userData = await userModel.find()
   res.render("dash",{user:userData})
 })
+
+router.get("/edit/:userId", async (req, res) => {
+  // Fetch the user data based on the provided userId
+  const userId = req.params.userId;
+  const userData = await userModel.findById(userId);
+
+  // Render the edit page with user data
+  res.render("edit", { user: userData });
+});
+
+router.post("/update/:userId", async (req, res) => {
+  const userId = req.params.userId;
+  const updatedData = req.body; // Assuming the form sends the entire updated data
+
+  try {
+     // Update the user data in the database
+     await userModel.findByIdAndUpdate(userId, updatedData);
+     res.redirect("/dash"); // Redirect to the user details page after updating
+  } catch (error) {
+     res.status(500).send("Error updating user data");
+  }
+});
 router.get("/", function (req, res, next) {
   res.redirect("profile",);
 });

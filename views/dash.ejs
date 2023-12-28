@@ -1,52 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Details</title>
+    <!-- Include Tailwind CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/stylesheets/dash.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Details</title>
-  <!-- Include Tailwind CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/stylesheets/dash.css">
-</head>
-
-<body class="bg-gray-100 h-screen flex items-center justify-center">
-
-  <div class="bg-white p-8 rounded shadow-md max-w-2xl w-full">
-
-    <!-- Table Header -->
-    <div class="mb-6">
-      <h2 class="text-2xl font-semibold mb-4">User Details</h2>
-      <table class="min-w-full bg-white border border-gray-300">
-        <thead>
-          <tr>
-            <th class="py-2 px-4 border-b">Full Name</th>
-            <th class="py-2 px-4 border-b">Username</th>
-            <th class="py-2 px-4 border-b">Email</th>
-            <th class="py-2 px-4 border-b">Image</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Replace the following with dynamic data from your database -->
-          <% user.forEach((e)=>{ %>
+  <body class="bg-gray-100 h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded shadow-md max-w-2xl w-full">
+      <!-- Table Header -->
+      <div class="mb-6">
+        <h2 class="text-2xl font-semibold mb-4">User Details</h2>
+        <table class="min-w-full bg-white border border-gray-300">
+          <thead>
             <tr>
-                <td class="py-2 px-4 border-b"><%= e.fullname %></td>
-                <td class="py-2 px-4 border-b">@<%= e.username %></td>
-                <td class="py-2 px-4 border-b"><%= e.email %></td>
-                <td class="py-2 px-4 border-b">
-                  <img src="/images/pfp/<%= e.image %>" alt="User Image" class="h-8 w-8 object-cover rounded-full">
-                </td>
-              </tr>
+              <th class="py-2 px-4 border-b">Full Name</th>
+              <th class="py-2 px-4 border-b">Username</th>
+              <th class="py-2 px-4 border-b">Email</th>
+              <th class="py-2 px-4 border-b">Image</th>
+            </tr>
+          </thead>
+         <!-- ... (other HTML code) ... -->
 
-         <% }) %>
-         
-          <!-- Add more rows for additional users -->
-        </tbody>
-      </table>
+<tbody>
+  <% user.forEach((e) => { %>
+     <tr>
+        <td class="py-2 px-4 border-b"><%= e.fullname %></td>
+        <td class="py-2 px-4 border-b">@<%= e.username %></td>
+        <td class="py-2 px-4 border-b"><%= e.email %></td>
+        <td class="py-2 px-4 border-b">
+           <img
+              src="/images/pfp/<%= e.image %>"
+              alt="User Image"
+              class="h-8 w-8 object-cover rounded-full"
+           />
+        </td>
+        <td class="py-2 px-4 border-b">
+           <a href="/edit/<%= e._id %>" class="text-blue-500">Edit</a>
+        </td>
+     </tr>
+  <% }) %>
+</tbody>
+
+<!-- ... (other HTML code) ... -->
+
+        </table>
+      </div>
     </div>
-
-  </div>
-
-</body>
-
+  </body>
 </html>
